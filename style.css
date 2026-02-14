@@ -20,7 +20,7 @@ h2{
 
 select, input, button{
   padding: 5px 10px;
-  margin: 5px 0;
+  margin: 5px;
   border-radius: 6px;
   font-size: 15px;
 }
@@ -33,37 +33,50 @@ button.remove{background: #e74c3c; color: #fff;}
 /* Table wrapper */
 .table-wrapper{
   width: 100%;
+  overflow-x: auto; /* horizontal scroll on mobile */
   margin-top: 20px;
   border-radius: 12px;
   background: #fff;
   border: 1px solid #d0d7e2;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  overflow-x: hidden; /* hide horizontal scroll, we’ll stack on mobile */
+}
+
+/* Scrollbar Styling */
+.table-wrapper::-webkit-scrollbar{
+  height: 8px;
+}
+.table-wrapper::-webkit-scrollbar-thumb{
+  background: #b8c6db;
+  border-radius: 10px;
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover{
+  background: #8fa8d6;
 }
 
 table{
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px; /* ensures table doesn’t shrink too much */
 }
 
 th{
   background: #f1f4f9;
   color: #000;
   font-weight: 600;
-  border: 1px solid #d0d7e2;
-  padding: 10px;
-  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
-td{
+th, td{
   border: 1px solid #d0d7e2;
   padding: 10px;
   text-align: center;
   word-break: break-word;
 }
 
-/* Mobile Card-Style Table */
-@media (max-width: 768px){
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
   body{
     padding: 10px;
   }
@@ -73,54 +86,21 @@ td{
   }
 
   select, input, button{
-    width: 100%;
     font-size: 14px;
-    padding: 6px 10px;
+    padding: 5px 8px;
+    width: 100%; /* full-width for easy tapping */
   }
 
-  table, thead, tbody, th, td, tr{
-    display: block;
+  .table-wrapper{
+    max-width: 100%;
   }
 
-  thead tr{
-    display: none; /* hide headers */
+  table{
+    min-width: 100%; /* fit table inside wrapper */
   }
 
-  tr{
-    margin-bottom: 15px;
-    border-radius: 8px;
-    padding: 10px;
-    background: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    border: 1px solid #d0d7e2;
-  }
-
-  td{
-    text-align: left;
-    padding-left: 50%;
-    position: relative;
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-  }
-
-  td:before{
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    width: 45%;
-    white-space: nowrap;
-    font-weight: 600;
-    color: #1f3a93;
-  }
-
-  /* Add column labels for each cell */
-  td:nth-of-type(1):before { content: "Column 1"; }
-  td:nth-of-type(2):before { content: "Column 2"; }
-  td:nth-of-type(3):before { content: "Column 3"; }
-  td:nth-of-type(4):before { content: "Column 4"; }
-  /* Add more as needed for additional columns */
-
-  td:last-child{
-    border-bottom: 0;
+  button.add, button.pdf, button.custom, button.remove{
+    padding: 8px 12px;
+    font-size: 14px;
   }
 }
