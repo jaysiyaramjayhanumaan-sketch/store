@@ -7,7 +7,7 @@
 body{
   font-family: 'Noto Sans Devanagari', sans-serif;
   background: #f3f6fb;
-  padding: 30px;
+  padding: 20px;
 }
 
 h2{
@@ -30,20 +30,18 @@ button.remove{background: #e74c3c; color: #fff;}
 
 /* Wrapper */
 .table-wrapper{
-  max-height: 320px;
-  overflow-y: auto;
-  overflow-x: auto;
+  width: 100%;
+  overflow-x: auto; /* horizontal scroll for mobile */
   margin-top: 20px;
   border-radius: 12px;
   background: #fff;
-  position: relative;
   border: 1px solid #d0d7e2;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 /* Scrollbar Styling */
 .table-wrapper::-webkit-scrollbar{
-  width: 8px;
+  height: 8px;
 }
 .table-wrapper::-webkit-scrollbar-thumb{
   background: #b8c6db;
@@ -53,21 +51,10 @@ button.remove{background: #e74c3c; color: #fff;}
   background: #8fa8d6;
 }
 
-.table-wrapper::after{
-  content:"";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 1px;
-  background: #d0d7e2;
-  pointer-events: none;
-}
-
 table{
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  min-width: 600px; /* ensures table doesn’t shrink too much on mobile */
 }
 
 /* Header */
@@ -86,13 +73,12 @@ th, td{
   padding: 10px;
   text-align: center;
   word-break: break-word;
-  transition: background 0.3s ease;
 }
 
-/* Mobile Responsiveness */
+/* Mobile Adjustments */
 @media (max-width: 768px) {
   body{
-    padding: 15px;
+    padding: 10px;
   }
 
   h2{
@@ -100,52 +86,15 @@ th, td{
   }
 
   select, input, button{
-    width: 100%;
-    margin: 5px 0;
+    font-size: 14px;
+    padding: 5px 8px;
   }
 
   .table-wrapper{
-    max-height: 250px;
+    max-width: 100%;
   }
 
-  table, thead, tbody, th, td, tr{
-    display: block;
+  table{
+    min-width: 100%; /* table fits inside wrapper and can scroll */
   }
-
-  thead tr{
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  tr{
-    margin: 0 0 10px 0;
-    border: 1px solid #d0d7e2;
-    border-radius: 6px;
-    padding: 10px;
-    background: #fff;
-  }
-
-  td{
-    border: none;
-    position: relative;
-    padding-left: 50%;
-    text-align: left;
-  }
-
-  td:before{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 45%;
-    white-space: nowrap;
-    font-weight: 600;
-  }
-
-  /* Assign labels for each column */
-  td:nth-of-type(1):before { content: "Column 1"; }
-  td:nth-of-type(2):before { content: "Column 2"; }
-  td:nth-of-type(3):before { content: "Column 3"; }
-  td:nth-of-type(4):before { content: "Column 4"; }
-  /* Add more as needed depending on number of columns */
 }
