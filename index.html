@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>किराना लिस्ट</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- PDF में Action कॉलम छुपाने के लिए CSS -->
+<style>
+  @media print {
+    .no-print { display: none !important; }
+  }
+</style>
+
+</head>
+
+<body>
+
+<h2>🛒 किराना/हाउसकीपिंग लिस्ट</h2>
+
+<select id="item">
+  <option value="">सामान चुनें</option>
+
+<optgroup label="साबुत अनाज">
+    <option>तुवर दाल</option>
+    <option>पोहा</option>
+    <option>मूंगफली</option>
+    <option>मूंग दाल छिलका</option>
+    <option>राजमा</option>
+    <option>काले चने</option>
+    <option>काबुली चना</option>
+    <option>हरा मटर</option>
+    <option>मूंग दाल धुली</option>
+    <option>साबूदाना</option>
+  </optgroup>
+
+   <optgroup label="मसाला">
+    <option>जीरा</option>
+    <option>अजवाइन</option>
+    <option>सौंफ मोटी</option>
+    <option>सौंफ बारीक</option>
+    <option>कस्तूरी मेथी</option>
+    <option>हल्दी पाउडर</option>
+    <option>लाल मिर्च पाउडर</option>
+    <option>धनिया पाउडर</option>
+    <option>कश्मीरी लाल मिर्च पाउडर</option>
+    <option>खड़ा धना</option>
+    <option>खड़ी लाल मिर्च</option>
+    <option>सांभर मसाला</option>
+    <option>चाट मसाला</option>
+    <option>सब्जी मसाला</option>
+    <option>किचन किंग मसाला</option>
+    <option>खड़ा गरम मसाला</option>
+    <option>काली मिर्च</option>
+    <option>लोंग</option>
+    <option>जीरामन मसाला(पोहा)</option>
+    <option>इलायची</option>
+    <option>दालचीनी</option>
+    <option>जायफल</option>
+    <option>जाय पत्री</option>
+    <option>खसखस</option>
+    <option>मगज</option>
+    <option>फूल चक्र</option>
+    <option>तेज पत्ता</option>
+    <option>डोढा</option>
+    <option>सरसों राई</option>
+    <option>मैथी दाना</option>
+  </optgroup>
+
+<optgroup label="ड्राई फ्रूट">
+    <option>काजू</option>
+    <option>बादाम</option>
+    <option>किशमिश</option>
+    <option>आचार चिरौंजी</option>
+    <option>पिस्ता</option>
+    <option>नारियल गोला</option>
+    <option>नारियल भूरा</option>
+  </optgroup>
+
+<optgroup label="अन्य">
+    <option>सोयाबीन तेल</option>
+    <option>शक्कर</option>
+    <option>गुड</option>
+    <option>चाय पत्ती</option>
+    <option>शुद्ध घी</option>
+    <option>दूध पाउडर</option>
+    <option>नमक</option>
+    <option>काला नमक</option>
+    <option>सेंधा नमक</option>
+    <option>मैदा</option>
+    <option>सूजी</option>
+    <option>बेसन</option>
+    <option>गुलाब जामुन पाउडर (Gits)</option>
+    <option>इडली पाउडर</option>
+    <option>डालडा</option>
+    <option>सरसों का तेल</option>
+    <option>मिक्स आचार</option>
+    <option>आम का आचार</option>
+    <option>नींबू का आचार</option>
+    <option>टमाटर सॉस</option>
+    <option>ग्रीन चिल्ली सॉस</option>
+    <option>पापड़</option>
+    <option>कॉफी पाउडर</option>
+  </optgroup>
+
+<optgroup label="हाउसकीपिंग">
+    <option>फूल झाड़ू</option>
+    <option>सींक झाड़ू</option>
+    <option>खुली सींक मोटी (लग्घा झाड़ू)</option>
+    <option>हार्पिक 500 ml</option>
+    <option>हार्पिक 1000 ml</option>
+    <option>एसिड</option>
+    <option>फिनाइल</option>
+    <option>वाइपर</option>
+    <option>विम बार</option>
+    <option>चेक डस्टर</option>
+    <option>फ्लोर डस्टर</option>
+    <option>ट्यूबलाइट एलइडी</option>
+    <option>ट्यूबलाइट रॉड</option>
+    <option>जीरो पावर बल्ब</option>
+    <option>फैन कंडेंसर</option>
+    <option>स्टील गूंजा(बर्तन)</option>
+    <option>प्लास्टिक गूंजा(बर्तन)</option>
+    <option>हेयर ऑयल ₹10</option>
+    <option>नहाने का साबुन ₹10</option>
+    <option>कपड़े धोने का साबुन</option>
+    <option>नैपकिन पेपर</option>
+    <option>टास्की R1</option>
+    <option>टास्की R2</option>
+    <option>टास्की R3</option>
+    <option>अल्युमिनियम foil</option>
+  </optgroup>
+
+</select>
+<input type="number" id="qty" placeholder="मात्रा">
+
+<select id="unit">
+  <option value="">इकाई</option>
+  <option>किलोग्राम</option>
+  <option>ग्राम</option>
+  <option>लीटर</option>
+  <option>पैकेट</option>
+  <option>नग</option>
+  
+</select>
+
+<button class="add" onclick="addItem()">सेव करें</button>
+
+<br><br>
+
+<input type="text" id="customItem" placeholder="नया सामान">
+<button class="custom" onclick="addCustom()">नया सामान जोड़ें</button>
+<button class="remove" onclick="removeCustom()">सामान हटाएँ</button>
+
+<div id="pdfContent">
+
+  <div class="pdfHeader">
+  <h2 style="text-align:center;">महर्षि वेद विज्ञान विद्यापीठ</h2>
+  <h3 style="text-align:center;">रतनपुर, भोपाल</h3>
+  <h3 style="text-align:center; text-decoration:underline;">किराना/हाउसकीपिंग सामान </h3>
+  <h4 id="monthYear" style="text-align:center; margin-top:5px;"></h4>
+</div>
+
+
+  <div class="table-wrapper">
+    <table id="mainTable">
+  <thead>
+    <tr>
+      <th>क्रम संख्या</th>
+      <th>सामान</th>
+      <th>मात्रा</th>
+      <th class="no-print">एक्शन</th>
+    </tr>
+  </thead>
+  <tbody id="list"></tbody>
+</table>
+
+  </div>
+
+</div>
+
+<br>
+
+<button class="pdf" onclick="generatePDF()">📄 PDF बनाएं</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
