@@ -1,4 +1,4 @@
-*{
+*{ 
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -8,17 +8,19 @@ body{
   font-family: 'Noto Sans Devanagari', sans-serif;
   background: #f3f6fb;
   padding: 20px;
+  color: #333;
 }
 
 h2{
   text-align: center;
   margin-bottom: 20px;
   color: #1f3a93;
+  font-size: 28px;
 }
 
 select, input, button{
   padding: 5px 10px;
-  margin: 5px;
+  margin: 5px 0;
   border-radius: 6px;
   font-size: 15px;
 }
@@ -28,73 +30,97 @@ button.pdf{background: #27ae60; color: #fff;}
 button.custom{background: #f39c12; color: #fff;}
 button.remove{background: #e74c3c; color: #fff;}
 
-/* Wrapper */
+/* Table wrapper */
 .table-wrapper{
   width: 100%;
-  overflow-x: auto; /* horizontal scroll for mobile */
   margin-top: 20px;
   border-radius: 12px;
   background: #fff;
   border: 1px solid #d0d7e2;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-/* Scrollbar Styling */
-.table-wrapper::-webkit-scrollbar{
-  height: 8px;
-}
-.table-wrapper::-webkit-scrollbar-thumb{
-  background: #b8c6db;
-  border-radius: 10px;
-}
-.table-wrapper::-webkit-scrollbar-thumb:hover{
-  background: #8fa8d6;
+  overflow-x: hidden; /* hide horizontal scroll, we’ll stack on mobile */
 }
 
 table{
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px; /* ensures table doesn’t shrink too much on mobile */
 }
 
-/* Header */
 th{
   background: #f1f4f9;
   color: #000;
   font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  border: 1px solid #d0d7e2;
+  padding: 10px;
+  text-align: center;
 }
 
-/* Cells */
-th, td{
+td{
   border: 1px solid #d0d7e2;
   padding: 10px;
   text-align: center;
   word-break: break-word;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 768px) {
+/* Mobile Card-Style Table */
+@media (max-width: 768px){
   body{
     padding: 10px;
   }
 
   h2{
-    font-size: 20px;
+    font-size: 22px;
   }
 
   select, input, button{
+    width: 100%;
     font-size: 14px;
-    padding: 5px 8px;
+    padding: 6px 10px;
   }
 
-  .table-wrapper{
-    max-width: 100%;
+  table, thead, tbody, th, td, tr{
+    display: block;
   }
 
-  table{
-    min-width: 100%; /* table fits inside wrapper and can scroll */
+  thead tr{
+    display: none; /* hide headers */
+  }
+
+  tr{
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border: 1px solid #d0d7e2;
+  }
+
+  td{
+    text-align: left;
+    padding-left: 50%;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  td:before{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #1f3a93;
+  }
+
+  /* Add column labels for each cell */
+  td:nth-of-type(1):before { content: "Column 1"; }
+  td:nth-of-type(2):before { content: "Column 2"; }
+  td:nth-of-type(3):before { content: "Column 3"; }
+  td:nth-of-type(4):before { content: "Column 4"; }
+  /* Add more as needed for additional columns */
+
+  td:last-child{
+    border-bottom: 0;
   }
 }
